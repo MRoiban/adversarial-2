@@ -24,7 +24,9 @@ jobs:
     - name: Install dependencies
       run: |
         pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install matplotlib
+        pip install laser-learning-environment
+        pip install pytest
 
     - name: Run tests
       run: pytest --disable-warnings -v
