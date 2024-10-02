@@ -53,6 +53,7 @@ def minimax(mdp: CompetitiveWorld, state: S, max_depth: int, depth=None) -> Opti
     if depth == 0 or mdp.is_final(state):
         ex = closest_exit(mdp, state)
         agent = mdp.world.agents_positions[state.current_agent]
+        mdp.world.gems.items()
         return [(ex[0][0] + ex[0][1]) + is_exit(ex[0], agent) - ex[1], action]
 
     if state.current_agent == 0:

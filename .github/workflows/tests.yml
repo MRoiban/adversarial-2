@@ -27,6 +27,7 @@ jobs:
         pip install matplotlib
         pip install laser-learning-environment
         pip install pytest
+        pip install icecream
 
     - name: Run tests
       run: pytest --disable-warnings -v
