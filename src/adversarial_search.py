@@ -42,6 +42,9 @@ def closest_exit(mdp:CompetitiveWorld, state: S):
             current_exit = ex
     return current_exit, best_distance
 
+def closest_gem(mdp:CompetitiveWorld, state: S):
+    ...
+
 def is_exit(ex, agent):
     return 1 if ex == agent else 0
 
