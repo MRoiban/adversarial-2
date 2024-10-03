@@ -44,6 +44,9 @@ def closest_exit(mdp:CompetitiveWorld, state: S):
 
 def closest_gem(mdp:CompetitiveWorld, state: S):
     ...
+    
+def is_gem(gem, agent):
+    ...
 
 def is_exit(ex, agent):
     return 1 if ex == agent else 0
@@ -53,11 +56,13 @@ def minimax(mdp: CompetitiveWorld, state: S, max_depth: int, depth=None) -> Opti
     if depth == None:
         depth = max_depth
         
-    if depth == 0 or mdp.is_final(state):
+    if depth == 0 or (mdp.is_final(state) and 
+                      (mdp.world.gems_collected == len(mdp.world.gems))):
         ex = closest_exit(mdp, state)
+        gem = closest_gem(mdp, state)
         agent = mdp.world.agents_positions[state.current_agent]
         mdp.world.gems.items()
-        return [(ex[0][0] + ex[0][1]) + is_exit(ex[0], agent) - ex[1], action]
+        return [(ex[0][0] + ex[0][1]) + is_exit(ex[0], agent) - ex[1] + (gem[0][0] + gem[0][1]) + is_gem(gem[0], agent) - gem[1], action]
 
     if state.current_agent == 0:
         state.value = -inf
