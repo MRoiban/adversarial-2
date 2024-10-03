@@ -1,5 +1,6 @@
 from lle import World, Action
 from competitive_world import CompetitiveWorld
+from competitive_graph import GraphMDP
 
 import random
 import adversarial_search
@@ -16,10 +17,11 @@ def main():
         """
         )
     )
+    mdp = GraphMDP.parse("tests/graphs/vary-depth.graph")
     # state = world.reset()
     # transitionState = world.step(state, Action(1))
     # world.world.set_state(transitionState.world_state)
-    print(adversarial_search.minimax(world, world.reset(),4))
+    print(adversarial_search.minimax(mdp, mdp.reset(),4))
 
 
 if __name__ == "__main__":

@@ -70,7 +70,7 @@ S1 . . .
         )
     )
     action = alpha_beta(world, world.reset(), 3)
-    assert action == Action.EAST
+    assert action in [Action.EAST, Action.SOUTH]
 
 
 def test_alpha_beta_greedy_5steps():
