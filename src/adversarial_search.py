@@ -63,6 +63,8 @@ def is_exit(ex, agent):
 def minimax(mdp: CompetitiveWorld, state: S, max_depth: int, depth=None) -> Optional[A]:
     action = Action(4)
     if depth == None:
+        if state.current_agent != 0:
+            raise ValueError
         depth = max_depth
         
     if depth == 0 or (mdp.is_final(state) and (mdp.world.gems_collected == len(mdp.world.gems))):
